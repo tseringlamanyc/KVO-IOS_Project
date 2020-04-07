@@ -28,17 +28,22 @@ class WelcomeVC: UIViewController {
     }
     
     private func configureFontSizeObservation() {
-        fontSizeObservation = Settings.shared.observe(\.fontSize, options: [], changeHandler: { (settings, change) in
-            
+        fontSizeObservation = Settings.shared.observe(\.fontSize, options: [.old, .new], changeHandler: { [weak self](settings, change) in
+            guard let newSize = change.newValue else {return}
+            let fontSize = CGFloat(newSize)
+            self?.welcomeLabel.font = UIFont.systemFont(ofSize: fontSize)
         })
     }
     
     private func configureIconNameObservation() {
-        fontSizeObservation = Settings.shared.observe(\.iconName, options: [], changeHandler: { (settings, change) in
-            
+        iconNameObservation = Settings.shared.observe(\.iconName, options: [.old, .new], changeHandler: {[weak self] (settings, change) in
+            guard let newIcon = change.newValue else {return}
+            self?.iconImageView.image = UIImage(systemName: newIcon)
         })
     }
     
-    
+    deinit {  // gets called when the object is no longer in memory
+        fontSizeObservation?.invalidate()
+        iconNameObservation?.invalidate()
+    }
 }
-
