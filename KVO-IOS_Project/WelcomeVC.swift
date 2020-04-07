@@ -9,10 +9,13 @@
 import UIKit
 
 class WelcomeVC: UIViewController {
-
+    
+    @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    
     }
 
 

@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Settings-->
         <scene sceneID="36z-ju-xea">
             <objects>
-                <viewController id="6fZ-fh-0MJ" sceneMemberID="viewController">
+                <viewController id="6fZ-fh-0MJ" customClass="SettingsVC" customModule="KVO_IOS_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3nZ-xL-Oxk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,8 +21,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9nR-eY-3hn">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="5" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="9nR-eY-3hn">
                                 <rect key="frame" x="18" y="125" width="378" height="31"/>
+                                <connections>
+                                    <action selector="sliderChanged:" destination="6fZ-fh-0MJ" eventType="valueChanged" id="eoE-Jb-e1Y"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSn-tm-n5b">
                                 <rect key="frame" x="202" y="175" width="10.5" height="21"/>
@@ -30,8 +33,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vY-b3-vJP">
-                                <rect key="frame" x="0.0" y="340" width="414" height="216"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9vY-b3-vJP">
+                                <rect key="frame" x="47" y="340" width="320" height="216"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -49,16 +52,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cl8-eY-QDg"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="WJg-Mu-PLA"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="WJg-Mu-PLA"/>
+                    <connections>
+                        <outlet property="fontSizeLabel" destination="qSn-tm-n5b" id="UuB-cq-4eN"/>
+                        <outlet property="pickerView" destination="9vY-b3-vJP" id="c5j-Ie-Adg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTb-DQ-jNP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-194.20289855072465" y="112.5"/>
         </scene>
-        <!--Item 1-->
+        <!--Welcome-->
         <scene sceneID="p2G-Ka-TH6">
             <objects>
-                <viewController id="OYx-IX-msd" customClass="ViewController" customModule="KVO_IOS_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OYx-IX-msd" customClass="WelcomeVC" customModule="KVO_IOS_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r7C-bO-Ie6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,7 +99,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5bb-O6-v6i"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="50W-4A-Og5"/>
+                    <tabBarItem key="tabBarItem" title="Welcome" image="sun.min.fill" catalog="system" id="50W-4A-Og5"/>
+                    <connections>
+                        <outlet property="iconImageView" destination="Uoy-2q-5ho" id="26F-e4-Nfv"/>
+                        <outlet property="welcomeLabel" destination="zVk-PG-QrS" id="peo-xN-vfe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="87d-cx-fYg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -118,6 +129,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="sun.haze.fill" catalog="system" width="128" height="119"/>
+        <image name="sun.min.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
